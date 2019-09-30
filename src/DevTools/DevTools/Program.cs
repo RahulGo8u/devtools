@@ -8,6 +8,10 @@ namespace DevTools
     {
         static void Main(string[] args)
         {            
+            
+        }
+        void Base64EncodingDecodingTask()
+        {
             Console.WriteLine("Input your String");
             string plainTextInputStr = Console.ReadLine();
             var obj = new EncoderDecoder();

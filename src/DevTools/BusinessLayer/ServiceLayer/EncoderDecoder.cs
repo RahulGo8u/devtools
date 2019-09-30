@@ -11,14 +11,14 @@ namespace BusinessLayer.ServiceLayer
         public string Base64Decoder(string base64EncodedStr, CharacterSetEnum charSet)
         {
             string base64DecodedStr = "";
-            byte[] data = Convert.FromBase64String(base64EncodedStr);
+            byte[] decodedData = Convert.FromBase64String(base64EncodedStr);
             switch (charSet)
             {
-                case CharacterSetEnum.US_ASCII:
-                    base64DecodedStr = Encoding.ASCII.GetString(data);
+                case CharacterSetEnum.ASCII:
+                    base64DecodedStr = Encoding.ASCII.GetString(decodedData);
                     break;
-                case CharacterSetEnum.UTF_8:
-                    base64DecodedStr = Encoding.UTF8.GetString(data);
+                case CharacterSetEnum.UTF8:
+                    base64DecodedStr = Encoding.UTF8.GetString(decodedData);
                     break;
                 default:
                     break;
@@ -29,19 +29,19 @@ namespace BusinessLayer.ServiceLayer
         public string Base64Encoder(string plainTextStr, CharacterSetEnum charSet)
         {            
             string base64EncodedStr = "";
-            byte[] data = null;
+            byte[] encodedData = null;
             switch (charSet)
             {
-                case CharacterSetEnum.US_ASCII:
-                    data = Encoding.ASCII.GetBytes(plainTextStr);                    
+                case CharacterSetEnum.ASCII:
+                    encodedData = Encoding.ASCII.GetBytes(plainTextStr);                    
                     break;
-                case CharacterSetEnum.UTF_8:
-                    data = Encoding.UTF8.GetBytes(plainTextStr);                    
+                case CharacterSetEnum.UTF8:
+                    encodedData = Encoding.UTF8.GetBytes(plainTextStr);                    
                     break;
                 default:
                     break;
             }
-            base64EncodedStr = Convert.ToBase64String(data);
+            base64EncodedStr = Convert.ToBase64String(encodedData);
             return base64EncodedStr;
         }
         public string XMLDecoder(string encodedXMLStr, CharacterSetEnum charSet)

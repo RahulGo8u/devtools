@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Text;
 
 namespace BusinessLayer.Enums
@@ -7,8 +8,12 @@ namespace BusinessLayer.Enums
     public enum CharacterSetEnum
     {
         None = 0,
-        US_ASCII = 1,        
-        UTF_8 = 2,
-        ISO_8859_1 = 3
+        ASCII = 1,
+        UTF7 = 2,
+        UTF8 = 3,
+        [Description("Unicode")]
+        UTF16 = 4,
+        UTF32 = 5,
+        ISO_8859_1 = 6
     }
 }
