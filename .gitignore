@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/src/DevTools/.vs/DevTools/v15
+/src/DevTools/BusinessLayer/bin/Debug/netstandard2.0
+/src/DevTools/BusinessLayer/obj
+/src/DevTools/DevTools/obj
+/src/DevTools/DevTools/bin/Debug/netcoreapp2.1
