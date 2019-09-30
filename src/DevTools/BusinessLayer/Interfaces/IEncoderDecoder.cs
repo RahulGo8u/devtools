@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusinessLayer.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,9 +7,9 @@ namespace BusinessLayer.Interfaces
 {
     interface IEncoderDecoder
     {
-        string XMLEncoder(string plainTextStr);
-        string XMLDecoder(string encodedXMLStr);        
-        string Base64Encoder(string plainTextStr);
-        string Base64Decoder(string encodedBase64Str);
+        string XMLDecoder(string encodedXMLStr, CharacterSetEnum charSet);
+        string XMLEncoder(string plainTextStr, CharacterSetEnum charSet);
+        string Base64Encoder(string plainTextStr, CharacterSetEnum charSet);
+        string Base64Decoder(string base64EncodedStr, CharacterSetEnum charSet);
     }
 }

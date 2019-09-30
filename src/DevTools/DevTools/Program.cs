@@ -1,18 +1,23 @@
 ﻿using BusinessLayer.ServiceLayer;
 using System;
+using BusinessLayer.Enums;
 
 namespace DevTools
 {
     class Program
     {
         static void Main(string[] args)
-        {
-            string inputStr = "My Name is Rahul";
+        {            
+            Console.WriteLine("Input your String");
+            string plainTextInputStr = Console.ReadLine();
             var obj = new EncoderDecoder();
-            string encodedBase64Str = obj.Base64Encoder(inputStr);
-            Console.WriteLine("Encoded Base 64 string: "+ encodedBase64Str);
-            string decodedBase64Str = obj.Base64Decoder(encodedBase64Str);
-            Console.WriteLine("Decoded Base 64 string: " + decodedBase64Str);
+            Console.WriteLine("Select Character Set to Encode your string.\n Press 1 for ASCII, 2 for UTF-8\n");
+            CharacterSetEnum charSetEnum = (CharacterSetEnum)(int.Parse(Console.ReadLine()));
+
+            string base64EncodedStr = obj.Base64Encoder(plainTextInputStr, charSetEnum);
+            Console.WriteLine("Encoded string using Base 64 format: \n{0}", base64EncodedStr);
+            string base64DecodedStr = obj.Base64Decoder(base64EncodedStr, charSetEnum);
+            Console.WriteLine("Decoded string using Base 64 Format: \n{0}", base64DecodedStr, charSetEnum);
         }
     }
 }
