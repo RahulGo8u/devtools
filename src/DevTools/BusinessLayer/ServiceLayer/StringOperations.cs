@@ -126,16 +126,55 @@ namespace BusinessLayer.ServiceLayer
             return Regex.Replace(str, @"\s+", " ");
         }
 
-        public string ReplaceSubstring(string findSubstring, string subStrToReplace)
+        /// <summary>
+        /// Replace substring in a string
+        /// </summary>
+        /// <param name="orgStr"></param>
+        /// <param name="findSubstring"></param>
+        /// <param name="subStrToReplace"></param>
+        /// <returns></returns>
+        public string ReplaceSubstring(string orgStr, string findSubstring, string subStrToReplace)
         {
-            throw new NotImplementedException();
+            return orgStr.Replace(findSubstring, subStrToReplace);
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public string ReverseEachWordOfString(string str)
-        {
-            throw new NotImplementedException();
+        {            
+            string strrev = "";
+            char[] punctuation = new char[] { ' ', ',', '.', ':', '\t', '?', '!', '@', '#' };   // note the space!
+
+            // convert the input to char[]
+            char[] inputAsChars = str.ToCharArray();
+
+            // step through the char[] looking for punctuation and spaces
+            string temp = "";
+            foreach (char c in inputAsChars)
+            {
+                if (punctuation.Contains(c))
+                {
+                    //found a word separator so reverse what we have so far
+                    char[] tx = temp.ToCharArray();
+                    Array.Reverse(tx);
+                    temp = new string(tx);
+                    strrev += temp + c;    // make sure we add on the separator
+                    temp = "";
+                }
+                else
+                    temp += c; //otherwise add the char to the end of our temporary word
+            }
+            return strrev;
         }
 
+        /// <summary>
+        /// Reverse string
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public string ReverseString(string str)
         {
             char[] chars = new char[str.Length];
@@ -146,11 +185,24 @@ namespace BusinessLayer.ServiceLayer
             return new string(chars);
         }
 
+        /// <summary>
+        /// Splitting string using substring
+        /// </summary>
+        /// <param name="filter"></param>
+        /// <returns></returns>
         public string[] SplitStringBySubstring(string filter)
         {
-            throw new NotImplementedException();
+            string data = "THExxQUICKxxBROWNxxFOX";
+
+            return data.Split(new string[] { "xx" }, StringSplitOptions.None);
         }
 
+        /// <summary>
+        /// String Case formatting
+        /// </summary>
+        /// <param name="str"></param>
+        /// <param name="caseType"></param>
+        /// <returns></returns>
         public string StringCaseFormatting(string str, CaseTypeEnum caseType)
         {
             switch (caseType)
@@ -164,7 +216,12 @@ namespace BusinessLayer.ServiceLayer
             }            
         }
 
-        public string StringConcat(params string[] values)
+        /// <summary>
+        /// Concat multiple strings
+        /// </summary>
+        /// <param name="values"></param>
+        /// <returns></returns>
+        public string StringConcat(string[] values)
         {
             StringBuilder sb = new StringBuilder();
             foreach (var str in values)
