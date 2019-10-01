@@ -20,6 +20,31 @@ namespace DevTools
         {
             
         }
+        void RemoveAllWhiteSpaces()
+        {
+            Console.WriteLine("Enter your string");
+            string str = Console.ReadLine();
+            var result = objStrOperations.RemoveAllWhiteSpaces(str);
+            Console.WriteLine("Formatted strin is:\n");
+            Console.WriteLine(result);
+        }
+        void GetCharacterCount()
+        {
+            Console.WriteLine("Enter your string");
+            string str = Console.ReadLine();
+            Console.WriteLine("Formatting string, Removing all spaces");
+            str = objStrOperations.RemoveAllWhiteSpaces(str);
+            Console.WriteLine("Formatted string after removing white spaces");
+            Console.WriteLine(str);
+            var charCountLst = objStrOperations.GetCharacterCount(str);
+            Console.WriteLine("Character Counts are:\n");
+            foreach (var charCount in charCountLst)
+            {
+                Console.WriteLine(charCount.Key + " : " + charCount.Value);
+            }
+            Console.ReadKey();
+        }
+
         void GetCharacterAtPosition()
         {
             string str = "The main target is down in hill";

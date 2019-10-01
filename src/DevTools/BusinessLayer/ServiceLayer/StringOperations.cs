@@ -3,7 +3,9 @@ using BusinessLayer.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
+using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace BusinessLayer.ServiceLayer
 {
@@ -16,7 +18,14 @@ namespace BusinessLayer.ServiceLayer
 
         public Dictionary<char, int> GetCharacterCount(string input)
         {
-            throw new NotImplementedException();
+            var charCountLst = input.ToCharArray().GroupBy(x => x).Select(grp => new { key = grp.Key, count = grp.Count() }).OrderBy(y=>y.count).ToDictionary(t => t.key, t => t.count);
+            return charCountLst;
+        }
+
+        public string RemoveAllWhiteSpaces(string input)
+        {
+            string output = Regex.Replace(input, @"\s+", "");
+            return output;
         }
 
         public int GetCountOfSubstring(string input)
