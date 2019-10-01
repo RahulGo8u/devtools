@@ -21,6 +21,7 @@ namespace BusinessLayer.ServiceLayer
         {
             return str[index].ToString();
         }
+        
         /// <summary>
         /// Get all count of characters of a string
         /// </summary>
@@ -31,6 +32,7 @@ namespace BusinessLayer.ServiceLayer
             var charCountLst = str.ToCharArray().GroupBy(x => x).Select(grp => new { key = grp.Key, count = grp.Count() }).OrderBy(y=>y.count).ToDictionary(t => t.key, t => t.count);
             return charCountLst;
         }
+        
         /// <summary>
         /// Remove all white spaces from a string
         /// </summary>
@@ -41,6 +43,7 @@ namespace BusinessLayer.ServiceLayer
             string output = Regex.Replace(str, @"\s+", "");
             return output;
         }
+        
         /// <summary>
         /// Get count of text
         /// </summary>
@@ -50,6 +53,7 @@ namespace BusinessLayer.ServiceLayer
         {
             return Regex.Matches(str, text).Count;
         }
+        
         /// <summary>
         /// Get First index of Substring
         /// </summary>
@@ -77,6 +81,7 @@ namespace BusinessLayer.ServiceLayer
                 indexes.Add(index);
             }
         }
+        
         /// <summary>
         /// Get Length of string
         /// </summary>
@@ -86,15 +91,39 @@ namespace BusinessLayer.ServiceLayer
         {
             return str.Length;
         }
-
-        public Dictionary<string, int> GetWordCount(string str)
+        
+        /// <summary>
+        /// Get count of all words in a string
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public int CountOfWords(string str)
         {
-            throw new NotImplementedException();
+            char[] delimiters = new char[] { ' ', '\r', '\n' };
+            int count = str.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).Length;
+            return count;
+        }
+        
+        /// <summary>
+        /// Get All word counts in a string
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public Dictionary<string, int> GetAllWordsCount(string str)
+        {
+            char[] delimiters = new char[] { ' ', '\r', '\n' };
+            var wrdCounts = str.Split(delimiters, StringSplitOptions.RemoveEmptyEntries).GroupBy(x => x).Select(grp => new { str = grp.Key, count = grp.Count() }).OrderBy(y => y.count).ToDictionary(t => t.str, t => t.count);
+            return wrdCounts;
         }
 
+        /// <summary>
+        /// Remove unwanted spaces
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
         public string RemoveUnwantedWhiteSpace(string str)
         {
-            throw new NotImplementedException();
+            return Regex.Replace(str, @"\s+", " ");
         }
 
         public string ReplaceSubstring(string findSubstring, string subStrToReplace)

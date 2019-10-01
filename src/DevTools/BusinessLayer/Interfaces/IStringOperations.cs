@@ -10,7 +10,7 @@ namespace BusinessLayer.Interfaces
         string ReverseString(string str);
         int GetStringLength(string str);
         Dictionary<char, int> GetCharacterCount(string str);
-        Dictionary<string, int> GetWordCount(string str);
+        Dictionary<string, int> GetAllWordsCount(string str);
         string StringConcat(params string[] values);
         int GetFirstIndexOfSubString(string str, string subStr);
         List<int> GetAllIndexesOfSubString(string str);
