@@ -1,6 +1,7 @@
 ﻿using BusinessLayer.ServiceLayer;
 using System;
 using BusinessLayer.Enums;
+using System.Text;
 
 namespace DevTools
 {
@@ -8,8 +9,26 @@ namespace DevTools
     {
         static void Main(string[] args)
         {
-            StringCaseFormatting();
+            StringConcat();
         }
+
+        static void StringConcat()
+        {
+            Console.WriteLine("How many text you want to join");
+            int n = int.Parse(Console.ReadLine());
+            string[] array = new string[n];
+            Console.WriteLine("Input your strings in seperate lines");
+            for (int i = 0; i < n; i++)
+            {
+                array[i] = Console.ReadLine();
+            }
+            Console.WriteLine("Your Final string is:\n");
+            var obj = new StringOperations();
+            Console.WriteLine(obj.StringConcat(array));
+            Console.ReadLine();
+
+        }
+
         static void StringCaseFormatting()
         {
             Console.WriteLine("Input your string");

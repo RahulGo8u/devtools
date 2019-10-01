@@ -89,7 +89,12 @@ namespace BusinessLayer.ServiceLayer
 
         public string StringConcat(params string[] values)
         {
-            throw new NotImplementedException();
+            StringBuilder sb = new StringBuilder();
+            foreach (var str in values)
+            {
+                sb.Append(str);
+            }
+            return sb.ToString();
         }
     }
 }
