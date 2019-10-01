@@ -20,7 +20,7 @@ namespace BusinessLayer.Interfaces
         string RemoveUnwantedWhiteSpace(string input);
         string ReplaceSubstring(string findSubstring, string subStrToReplace);
         //CompareStrings(string firstStr, string secondStr);
-        char GetCharacterByIndex(string input, int index);
+        string GetCharacterAtPosition(string input, int index);
         string[] SplitStringBySubstring(string filter);
     }
 }

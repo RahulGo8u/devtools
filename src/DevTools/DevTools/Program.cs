@@ -7,12 +7,27 @@ namespace DevTools
 {
     class Program
     {
+        static readonly StringOperations objStrOperations;
+        static readonly EncoderDecoder objEncoderDecoder;
+        static readonly Program objProgram;
+        static Program()
+        {
+            objProgram = new Program();
+            objStrOperations = new StringOperations();
+            objEncoderDecoder = new EncoderDecoder();
+        }        
         static void Main(string[] args)
         {
-            StringConcat();
+            
         }
-
-        static void StringConcat()
+        void GetCharacterAtPosition()
+        {
+            string str = "The main target is down in hill";
+            int index = 17;
+            string c = objStrOperations.GetCharacterAtPosition(str, index);
+            Console.WriteLine(c);
+        }
+        void StringConcat()
         {
             Console.WriteLine("How many text you want to join");
             int n = int.Parse(Console.ReadLine());
@@ -22,34 +37,29 @@ namespace DevTools
             {
                 array[i] = Console.ReadLine();
             }
-            Console.WriteLine("Your Final string is:\n");
-            var obj = new StringOperations();
-            Console.WriteLine(obj.StringConcat(array));
+            Console.WriteLine("Your Final string is:\n");            
+            Console.WriteLine(objStrOperations.StringConcat(array));
             Console.ReadLine();
-
         }
-
-        static void StringCaseFormatting()
+        void StringCaseFormatting()
         {
             Console.WriteLine("Input your string");
             string str = Console.ReadLine(); ;
             Console.WriteLine("Select \n1 for Lower Case\n2 for Upper Case");
             CaseTypeEnum caseType = (CaseTypeEnum)(int.Parse(Console.ReadLine()));
-            var obj = new StringOperations();
-            var result = obj.StringCaseFormatting(str, caseType);
+            var result = objStrOperations.StringCaseFormatting(str, caseType);
             Console.WriteLine("Reversed string is :\n" + result);
             Console.ReadKey();
         }
-
-        static void ReverseString()
+        void ReverseString()
         {
             Console.WriteLine("Input your string");
             string str = Console.ReadLine(); ;
             var obj = new StringOperations();
-            var result = obj.ReverseString(str);
+            var result = objStrOperations.ReverseString(str);
             Console.WriteLine("Reversed string is :" + result);
         }
-        static void PasswordEncryptorDecryptor()
+        void PasswordEncryptorDecryptor()
         {
             Console.WriteLine("Please enter a passphrase to use:");
             string password = Console.ReadLine();
@@ -74,42 +84,39 @@ namespace DevTools
         void Base64EncodingDecodingTask()
         {
             Console.WriteLine("Input your String");
-            string plainText = Console.ReadLine();
-            var obj = new EncoderDecoder();
+            string plainText = Console.ReadLine();            
             Console.WriteLine("Select Character Set to Encode your string.\n Press 1 for ASCII, 2 for UTF-8\n");
             CharacterSetEnum charSetEnum = (CharacterSetEnum)(int.Parse(Console.ReadLine()));
 
-            string base64Encoded = obj.Base64Encoder(plainText, charSetEnum);
+            string base64Encoded = objEncoderDecoder.Base64Encoder(plainText, charSetEnum);
             Console.WriteLine("Encoded string using Base 64 format: \n{0}", base64Encoded);
-            string base64Decoded = obj.Base64Decoder(base64Encoded, charSetEnum);
+            string base64Decoded = objEncoderDecoder.Base64Decoder(base64Encoded, charSetEnum);
             Console.WriteLine("Decoded string using Base 64 Format: \n{0}", base64Decoded, charSetEnum);
         }
         void FormatXMLString()
         {
-            string xml = "<?xml version='1.0'?>                  <response><error code='1'>Success</error>         </response>                ";
-            var obj = new EncoderDecoder();
-            Console.WriteLine(obj.FormatXMLString(xml));
-            Console.WriteLine(obj.FormatXMLStringLINQ(xml));
+            string xml = "<?xml version='1.0'?>                  <response><error code='1'>Success</error>         </response>                ";            
+            Console.WriteLine(objEncoderDecoder.FormatXMLString(xml));
+            Console.WriteLine(objEncoderDecoder.FormatXMLStringLINQ(xml));
         }
         void XMLEncoderDecoderTask()
         {
             string xml = "<?xml version='1.0'?>                  <response><error code='1'>Success</error>         </response>                ";
-            var obj = new EncoderDecoder();
-            string formattedXML = obj.FormatXMLString(xml);
+            string formattedXML = objEncoderDecoder.FormatXMLString(xml);
             Console.WriteLine("Formatted XML: \n" + formattedXML);
-            string encodeXMLHTTPUtility = obj.XMLEncoder(formattedXML, UtilityEnum.HTTPUtility);
+            string encodeXMLHTTPUtility = objEncoderDecoder.XMLEncoder(formattedXML, UtilityEnum.HTTPUtility);
             Console.WriteLine("Encoded XML using HTTPUtility: \n" + encodeXMLHTTPUtility);
 
-            string encodeXMLWebUtility = obj.XMLEncoder(formattedXML, UtilityEnum.WebUtility);
+            string encodeXMLWebUtility = objEncoderDecoder.XMLEncoder(formattedXML, UtilityEnum.WebUtility);
             Console.WriteLine("Encoded XML using WebUtility: \n" + encodeXMLWebUtility);
 
-            string decodedXMLHTTPUtility = obj.XMLDecoder(encodeXMLHTTPUtility, UtilityEnum.HTTPUtility);
+            string decodedXMLHTTPUtility = objEncoderDecoder.XMLDecoder(encodeXMLHTTPUtility, UtilityEnum.HTTPUtility);
             Console.WriteLine("Decoded XML using HTTPUtility: \n" + decodedXMLHTTPUtility);
 
-            string decodedXMLWebUtility = obj.XMLDecoder(encodeXMLWebUtility, UtilityEnum.WebUtility);
+            string decodedXMLWebUtility = objEncoderDecoder.XMLDecoder(encodeXMLWebUtility, UtilityEnum.WebUtility);
             Console.WriteLine("Decoded XML using WebUtility: \n" + decodedXMLWebUtility);
 
-            string decodedXMLDirectly = obj.XMLDecoder(encodeXMLWebUtility);
+            string decodedXMLDirectly = objEncoderDecoder.XMLDecoder(encodeXMLWebUtility);
             Console.WriteLine("Decoded XML Directly: \n" + decodedXMLDirectly);
 
         }

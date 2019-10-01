@@ -9,9 +9,9 @@ namespace BusinessLayer.ServiceLayer
 {
     public class StringOperations : IStringOperations
     {
-        public char GetCharacterByIndex(string input, int index)
+        public string GetCharacterAtPosition(string input, int index)
         {
-            throw new NotImplementedException();
+            return input[index].ToString();
         }
 
         public Dictionary<char, int> GetCharacterCount(string input)
