@@ -8,19 +8,19 @@ namespace BusinessLayer.Interfaces
     interface IStringOperations
     {
         string ReverseString(string str);
-        int GetStringLength(string input);
-        Dictionary<char, int> GetCharacterCount(string input);
-        Dictionary<string, int> GetWordCount(string input);
+        int GetStringLength(string str);
+        Dictionary<char, int> GetCharacterCount(string str);
+        Dictionary<string, int> GetWordCount(string str);
         string StringConcat(params string[] values);
-        int GetIndexOfSubString(string input);
-        List<int> GetMultipleIndexsOfSubString(string input);
-        string ReverseEachWordOfString(string input);
-        int GetCountOfSubstring(string input);
-        string StringCaseFormatting(string input, CaseTypeEnum caseType);
-        string RemoveUnwantedWhiteSpace(string input);
+        int GetFirstIndexOfSubString(string str, string subStr);
+        List<int> GetAllIndexesOfSubString(string str);
+        string ReverseEachWordOfString(string str);
+        int GetCountOfSubstring(string str, string text);
+        string StringCaseFormatting(string str, CaseTypeEnum caseType);
+        string RemoveUnwantedWhiteSpace(string str);
         string ReplaceSubstring(string findSubstring, string subStrToReplace);
         //CompareStrings(string firstStr, string secondStr);
-        string GetCharacterAtPosition(string input, int index);
+        string GetCharacterAtPosition(string str, int index);
         string[] SplitStringBySubstring(string filter);
     }
 }

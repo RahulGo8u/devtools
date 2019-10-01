@@ -11,49 +11,88 @@ namespace BusinessLayer.ServiceLayer
 {
     public class StringOperations : IStringOperations
     {
-        public string GetCharacterAtPosition(string input, int index)
+        /// <summary>
+        /// Get position of character at position
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="index"></param>
+        /// <returns></returns>
+        public string GetCharacterAtPosition(string str, int index)
         {
-            return input[index].ToString();
+            return str[index].ToString();
         }
-
-        public Dictionary<char, int> GetCharacterCount(string input)
+        /// <summary>
+        /// Get all count of characters of a string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public Dictionary<char, int> GetCharacterCount(string str)
         {
-            var charCountLst = input.ToCharArray().GroupBy(x => x).Select(grp => new { key = grp.Key, count = grp.Count() }).OrderBy(y=>y.count).ToDictionary(t => t.key, t => t.count);
+            var charCountLst = str.ToCharArray().GroupBy(x => x).Select(grp => new { key = grp.Key, count = grp.Count() }).OrderBy(y=>y.count).ToDictionary(t => t.key, t => t.count);
             return charCountLst;
         }
-
-        public string RemoveAllWhiteSpaces(string input)
+        /// <summary>
+        /// Remove all white spaces from a string
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public string RemoveAllWhiteSpaces(string str)
         {
-            string output = Regex.Replace(input, @"\s+", "");
+            string output = Regex.Replace(str, @"\s+", "");
             return output;
         }
+        /// <summary>
+        /// Get count of text
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public int GetCountOfSubstring(string str, string text)
+        {
+            return Regex.Matches(str, text).Count;
+        }
+        /// <summary>
+        /// Get First index of Substring
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="subStr"></param>
+        /// <returns></returns>
+        public int GetFirstIndexOfSubString(string str, string subStr)
+        {
+            return str.IndexOf(subStr);
+        }
 
-        public int GetCountOfSubstring(string input)
+        /// <summary>
+        /// Get all position of substring
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public List<int> GetAllIndexesOfSubString(string str)
+        {
+            List<int> indexes = new List<int>();
+            for (int index = 0; ; index += str.Length)
+            {
+                index = str.IndexOf(str, index);
+                if (index == -1)
+                    return indexes;
+                indexes.Add(index);
+            }
+        }
+        /// <summary>
+        /// Get Length of string
+        /// </summary>
+        /// <param name="str"></param>
+        /// <returns></returns>
+        public int GetStringLength(string str)
+        {
+            return str.Length;
+        }
+
+        public Dictionary<string, int> GetWordCount(string str)
         {
             throw new NotImplementedException();
         }
 
-        public int GetIndexOfSubString(string input)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<int> GetMultipleIndexsOfSubString(string input)
-        {
-            throw new NotImplementedException();
-        }
-
-        public int GetStringLength(string input)
-        {
-            return input.Length;
-        }
-
-        public Dictionary<string, int> GetWordCount(string input)
-        {
-            throw new NotImplementedException();
-        }
-
-        public string RemoveUnwantedWhiteSpace(string input)
+        public string RemoveUnwantedWhiteSpace(string str)
         {
             throw new NotImplementedException();
         }
@@ -63,7 +102,7 @@ namespace BusinessLayer.ServiceLayer
             throw new NotImplementedException();
         }
 
-        public string ReverseEachWordOfString(string input)
+        public string ReverseEachWordOfString(string str)
         {
             throw new NotImplementedException();
         }
@@ -83,16 +122,16 @@ namespace BusinessLayer.ServiceLayer
             throw new NotImplementedException();
         }
 
-        public string StringCaseFormatting(string input, CaseTypeEnum caseType)
+        public string StringCaseFormatting(string str, CaseTypeEnum caseType)
         {
             switch (caseType)
             {
                 case CaseTypeEnum.Lower:
-                    return input.ToLower();
+                    return str.ToLower();
                 case CaseTypeEnum.Upper:
-                    return input.ToUpper();
+                    return str.ToUpper();
                 default:
-                    return input;
+                    return str;
             }            
         }
 
