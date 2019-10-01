@@ -8,7 +8,27 @@ namespace DevTools
     {
         static void Main(string[] args)
         {
+            StringCaseFormatting();
+        }
+        static void StringCaseFormatting()
+        {
+            Console.WriteLine("Input your string");
+            string str = Console.ReadLine(); ;
+            Console.WriteLine("Select \n1 for Lower Case\n2 for Upper Case");
+            CaseTypeEnum caseType = (CaseTypeEnum)(int.Parse(Console.ReadLine()));
+            var obj = new StringOperations();
+            var result = obj.StringCaseFormatting(str, caseType);
+            Console.WriteLine("Reversed string is :\n" + result);
+            Console.ReadKey();
+        }
 
+        static void ReverseString()
+        {
+            Console.WriteLine("Input your string");
+            string str = Console.ReadLine(); ;
+            var obj = new StringOperations();
+            var result = obj.ReverseString(str);
+            Console.WriteLine("Reversed string is :" + result);
         }
         static void PasswordEncryptorDecryptor()
         {
