@@ -8,7 +8,29 @@ namespace DevTools
     {
         static void Main(string[] args)
         {
-            
+
+        }
+        static void PasswordEncryptorDecryptor()
+        {
+            Console.WriteLine("Please enter a passphrase to use:");
+            string password = Console.ReadLine();
+            Console.WriteLine("Please enter your string to encrypt:");
+            string plaintext = Console.ReadLine();
+            Console.WriteLine("");
+
+            Console.WriteLine("Your encrypted string is:");
+            string encryptedstring = EncryptorDecryptor.Encrypt(plaintext, password);
+            Console.WriteLine(encryptedstring);
+            Console.WriteLine("");
+
+            Console.WriteLine("Your decrypted string is:");
+            string decryptedstring = EncryptorDecryptor.Decrypt(encryptedstring, password);
+            Console.WriteLine(decryptedstring);
+            Console.WriteLine("");
+
+            Console.WriteLine("Press any key to exit...");
+            Console.ReadLine();
+
         }
         void Base64EncodingDecodingTask()
         {
