@@ -7,9 +7,9 @@ namespace BusinessLayer.Interfaces
 {
     interface IEncoderDecoder
     {
-        string XMLDecoder(string encodedXMLStr, CharacterSetEnum charSet);
-        string XMLEncoder(string plainTextStr, CharacterSetEnum charSet);
-        string Base64Encoder(string plainTextStr, CharacterSetEnum charSet);
-        string Base64Decoder(string base64EncodedStr, CharacterSetEnum charSet);
+        string XMLDecoder(string encodedXMLStr, UtilityEnum utility);
+        string XMLEncoder(string plainText, UtilityEnum utility);
+        string Base64Encoder(string plainText, CharacterSetEnum charSet);
+        string Base64Decoder(string base64Encoded, CharacterSetEnum charSet);
     }
 }
